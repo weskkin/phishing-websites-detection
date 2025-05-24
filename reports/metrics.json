@@ -1,0 +1,23 @@
+{
+    "LogisticRegression": {
+        "Accuracy": 0.9998727708390763,
+        "Precision": 0.9997775800711743,
+        "Recall": 1.0,
+        "F1": 0.9998887776665555,
+        "ROC-AUC": 0.9999999779613244
+    },
+    "DecisionTree": {
+        "Accuracy": 1.0,
+        "Precision": 1.0,
+        "Recall": 1.0,
+        "F1": 1.0,
+        "ROC-AUC": 1.0
+    },
+    "RandomForest": {
+        "Accuracy": 1.0,
+        "Precision": 1.0,
+        "Recall": 1.0,
+        "F1": 1.0,
+        "ROC-AUC": 1.0
+    }
+}

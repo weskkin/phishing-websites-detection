@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import joblib
+import json
 
 # Load data
 df = pd.read_csv("../data/raw/phishing_data.csv")
@@ -41,8 +42,13 @@ joblib.dump(scaler, '../models/scaler.pkl')
 print("saved scaler in models/scaler.pkl")
 
 # Save scaled data (index false means dont include row numbers)
-pd.DataFrame(X_train_scaled).to_csv('../data/processed/X_train_scaled.csv', index=False)
-pd.DataFrame(X_test_scaled).to_csv('../data/processed/X_test_scaled.csv', index=False)
+pd.DataFrame(X_train_scaled, columns=X_train.columns).to_csv('../data/processed/X_train_scaled.csv', index=False)
+pd.DataFrame(X_test_scaled, columns=X_test.columns).to_csv('../data/processed/X_test_scaled.csv', index=False)
 y_train.to_csv('../data/processed/y_train.csv', index=False)
 y_test.to_csv('../data/processed/y_test.csv', index=False)
 print("saved scaled data in data/processed/*")
+
+feature_names = X_train.columns.tolist()
+with open('../data/processed/feature_names.json', 'w') as f:
+    json.dump(feature_names, f)
+print("Saved feature names to data/processed/feature_names.json")
