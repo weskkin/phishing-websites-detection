@@ -5,15 +5,19 @@ import joblib
 
 # Load data
 df = pd.read_csv("../data/raw/phishing_data.csv")
+print("Loaded raw data")
 
 # Drop columns that are identifiers or non-predictive
 df_clean = df.drop(columns=['FILENAME','Domain','URL','Title'])
+print("Dropped FILENAME, Domain, URL, Title columns for being identifiers / non-predictive")
 
 # Check unique TLD values
+print("Checking unique TLD values")
 print("Unique TLDs: ", df_clean['TLD'].nunique()) # ==> 695 too sparse, dropping it is better
 
 # Drop TLD column
 df_clean = df_clean.drop(columns=['TLD'])
+print("Dropped TLD column for bein too sparse")
 
 # Split data into features and target
 X = df_clean.drop(columns=['label'])
